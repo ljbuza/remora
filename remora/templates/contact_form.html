@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% block title %}Contact Me{% endblock %}
+{% block content %}
+    <h3>Contact Us</h3>
+    {% if form.errors %}
+    <p>Please correct the error {{ form.errors|pluralize }} below:</p>
+    {% endif %}
+    <form class="form-horizontal" action="" method="post">
+        {% csrf_token %}
+            {% for field in form %}
+                {% if field.errors %}
+                    <div class="form-group has-error">
+                        <label for="{{ field.label }}" class="col-sm-2 control-label">{{ field.label }}</label>
+                        <div class="col-sm-6">{{ field }}
+                            <span class="help-block">
+                                {% for error in field.errors %}{{ error }}{% endfor %}
+                            </span>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="form-group">
+                        <label for="{{ field.label }}" class="col-sm-2 control-label">{{ field.label }}</label>
+                        <div class="col-sm-6">{{ field }}
+                            {% if field.help_text %}
+                                <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                            {%endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        <div class="form-group">
+            <div  class="col-sm-offset-2 col-sm-6">
+                <button type="submit" class="btn btn-primary">Submit</botton>
+            </div>
+        </div>
+    </form>
+    <p>{{ content }}</p>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<form action="" method="get">
+    <input type="text" name="q">
+    <input type="submit" value="search">
+</form>
+<ul>
+{% if errors %}
+    {% for error in errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+{% endif %}
+{% if results %}
+    {% for book in results %}
+        <li>{{ book.title }}</li>
+    {% empty %}
+        <li>Sorry, nothing found.</li>
+    {% endfor %}
+{% endif %}
+</ul>
+{% endblock %}
