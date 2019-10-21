@@ -10,7 +10,7 @@ djangorestframework==3.3.3
 duplicity==0.7.6
 enum34==1.1.2
 gyp==0.1
-httpie==0.9.6
+httpie==1.0.3
 idna==2.0
 iotop==0.6
 ipaddress==1.0.16
